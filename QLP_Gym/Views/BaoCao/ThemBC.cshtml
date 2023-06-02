@@ -1,0 +1,43 @@
+﻿@model QLP_Gym.Models.BaoCaoDoanhThu
+@{
+    ViewBag.Title = "ThemBC";
+    Layout = null;
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Thêm Báo Cáo</title>
+
+    <link href="~/css/goitap.css" rel="stylesheet" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Thêm Báo Cáo
+        </div>
+        <form method="post" action="ThemBC">
+
+            <div class="field">
+                <input type="text" name="NoiDungBaoCao">
+                <label>Nội Dung Báo Cáo</label>
+            </div>
+            <div class="field">
+                <input type="date" name="NgayBatDau">
+                <label>Ngày Bắt Đầu</label>
+            </div>
+            <div class="field">
+                <input type="date" name="NgayKetThuc">
+                <label>Ngày Kết Thúc</label>
+            </div>
+            <div class="field">
+                <input type="submit" value="Thêm">
+            </div>
+            <div class="signup-link">
+                <a href="/BaoCao/BaoCao">Quay về</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

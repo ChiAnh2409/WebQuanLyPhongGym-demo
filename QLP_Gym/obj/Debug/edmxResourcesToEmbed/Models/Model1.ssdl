@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLPGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Role" Type="int" />
+    <Property Name="Username" Type="varchar" MaxLength="500" />
+    <Property Name="TenNV" Type="nvarchar" MaxLength="500" />
+    <Property Name="SDT" Type="char" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="500" />
+    <Property Name="Pass" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="BaoCaoDoanhThu">
+    <Key>
+      <PropertyRef Name="id_BC" />
+    </Key>
+    <Property Name="id_BC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NoiDungBaoCao" Type="nvarchar(max)" />
+    <Property Name="NgayBatDau" Type="datetime" />
+    <Property Name="NgayKetThuc" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ChiTietBaoCao">
+    <Key>
+      <PropertyRef Name="id_CTBC" />
+    </Key>
+    <Property Name="id_CTBC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_BC" Type="int" />
+    <Property Name="id_HV" Type="int" />
+    <Property Name="id_GT" Type="int" />
+    <Property Name="TongTien" Type="money" />
+  </EntityType>
+  <EntityType Name="ChiTietDK_GoiTap">
+    <Key>
+      <PropertyRef Name="id_CTDKGoiTap" />
+    </Key>
+    <Property Name="id_CTDKGoiTap" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_GT" Type="int" />
+    <Property Name="id_HV" Type="int" />
+    <Property Name="ThanhTien" Type="money" />
+  </EntityType>
+  <EntityType Name="GoiTap">
+    <Key>
+      <PropertyRef Name="id_GT" />
+    </Key>
+    <Property Name="id_GT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenGoiTap" Type="nvarchar" MaxLength="700" />
+    <Property Name="ThoiGianHieuLuc" Type="datetime" />
+    <Property Name="ChiPhi" Type="money" />
+  </EntityType>
+  <EntityType Name="HoiVien">
+    <Key>
+      <PropertyRef Name="id_HV" />
+    </Key>
+    <Property Name="id_HV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_TV" Type="int" />
+    <Property Name="id_GT" Type="int" />
+    <Property Name="TenHV" Type="nvarchar" MaxLength="700" />
+    <Property Name="TinhTrang" Type="bit" />
+    <Property Name="NgayGiaNhap" Type="datetime" />
+    <Property Name="HanGiaNhap" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="id_Role" />
+    </Key>
+    <Property Name="id_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Roles" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ThanhVien">
+    <Key>
+      <PropertyRef Name="id_TV" />
+    </Key>
+    <Property Name="id_TV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenTV" Type="nvarchar" MaxLength="500" />
+    <Property Name="SDT" Type="varchar" MaxLength="250" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="100" />
+    <Property Name="NgaySinh" Type="datetime" />
+    <Property Name="NgayTao" Type="datetime" />
+    <Property Name="HinhAnh" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK__Account__id_Role__267ABA7A">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="id_Role" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="id_Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietBa__id_BC__36B12243">
+    <End Role="BaoCaoDoanhThu" Type="Self.BaoCaoDoanhThu" Multiplicity="0..1" />
+    <End Role="ChiTietBaoCao" Type="Self.ChiTietBaoCao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaoCaoDoanhThu">
+        <PropertyRef Name="id_BC" />
+      </Principal>
+      <Dependent Role="ChiTietBaoCao">
+        <PropertyRef Name="id_BC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietBa__id_GT__38996AB5">
+    <End Role="GoiTap" Type="Self.GoiTap" Multiplicity="0..1" />
+    <End Role="ChiTietBaoCao" Type="Self.ChiTietBaoCao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoiTap">
+        <PropertyRef Name="id_GT" />
+      </Principal>
+      <Dependent Role="ChiTietBaoCao">
+        <PropertyRef Name="id_GT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietBa__id_HV__37A5467C">
+    <End Role="HoiVien" Type="Self.HoiVien" Multiplicity="0..1" />
+    <End Role="ChiTietBaoCao" Type="Self.ChiTietBaoCao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoiVien">
+        <PropertyRef Name="id_HV" />
+      </Principal>
+      <Dependent Role="ChiTietBaoCao">
+        <PropertyRef Name="id_HV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietDK__id_GT__30F848ED">
+    <End Role="GoiTap" Type="Self.GoiTap" Multiplicity="0..1" />
+    <End Role="ChiTietDK_GoiTap" Type="Self.ChiTietDK_GoiTap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoiTap">
+        <PropertyRef Name="id_GT" />
+      </Principal>
+      <Dependent Role="ChiTietDK_GoiTap">
+        <PropertyRef Name="id_GT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietDK__id_HV__31EC6D26">
+    <End Role="HoiVien" Type="Self.HoiVien" Multiplicity="0..1" />
+    <End Role="ChiTietDK_GoiTap" Type="Self.ChiTietDK_GoiTap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoiVien">
+        <PropertyRef Name="id_HV" />
+      </Principal>
+      <Dependent Role="ChiTietDK_GoiTap">
+        <PropertyRef Name="id_HV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoiVien__id_GT__2E1BDC42">
+    <End Role="GoiTap" Type="Self.GoiTap" Multiplicity="0..1" />
+    <End Role="HoiVien" Type="Self.HoiVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoiTap">
+        <PropertyRef Name="id_GT" />
+      </Principal>
+      <Dependent Role="HoiVien">
+        <PropertyRef Name="id_GT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoiVien__id_TV__2D27B809">
+    <End Role="ThanhVien" Type="Self.ThanhVien" Multiplicity="0..1" />
+    <End Role="HoiVien" Type="Self.HoiVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThanhVien">
+        <PropertyRef Name="id_TV" />
+      </Principal>
+      <Dependent Role="HoiVien">
+        <PropertyRef Name="id_TV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLPGModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BaoCaoDoanhThu" EntityType="Self.BaoCaoDoanhThu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiTietBaoCao" EntityType="Self.ChiTietBaoCao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiTietDK_GoiTap" EntityType="Self.ChiTietDK_GoiTap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GoiTap" EntityType="Self.GoiTap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HoiVien" EntityType="Self.HoiVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThanhVien" EntityType="Self.ThanhVien" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Account__id_Role__267ABA7A" Association="Self.FK__Account__id_Role__267ABA7A">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietBa__id_BC__36B12243" Association="Self.FK__ChiTietBa__id_BC__36B12243">
+      <End Role="BaoCaoDoanhThu" EntitySet="BaoCaoDoanhThu" />
+      <End Role="ChiTietBaoCao" EntitySet="ChiTietBaoCao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietBa__id_GT__38996AB5" Association="Self.FK__ChiTietBa__id_GT__38996AB5">
+      <End Role="GoiTap" EntitySet="GoiTap" />
+      <End Role="ChiTietBaoCao" EntitySet="ChiTietBaoCao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietBa__id_HV__37A5467C" Association="Self.FK__ChiTietBa__id_HV__37A5467C">
+      <End Role="HoiVien" EntitySet="HoiVien" />
+      <End Role="ChiTietBaoCao" EntitySet="ChiTietBaoCao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietDK__id_GT__30F848ED" Association="Self.FK__ChiTietDK__id_GT__30F848ED">
+      <End Role="GoiTap" EntitySet="GoiTap" />
+      <End Role="ChiTietDK_GoiTap" EntitySet="ChiTietDK_GoiTap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietDK__id_HV__31EC6D26" Association="Self.FK__ChiTietDK__id_HV__31EC6D26">
+      <End Role="HoiVien" EntitySet="HoiVien" />
+      <End Role="ChiTietDK_GoiTap" EntitySet="ChiTietDK_GoiTap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoiVien__id_GT__2E1BDC42" Association="Self.FK__HoiVien__id_GT__2E1BDC42">
+      <End Role="GoiTap" EntitySet="GoiTap" />
+      <End Role="HoiVien" EntitySet="HoiVien" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoiVien__id_TV__2D27B809" Association="Self.FK__HoiVien__id_TV__2D27B809">
+      <End Role="ThanhVien" EntitySet="ThanhVien" />
+      <End Role="HoiVien" EntitySet="HoiVien" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

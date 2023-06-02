@@ -1,0 +1,60 @@
+﻿@model QLP_Gym.Models.ThanhVien
+@{
+    ViewBag.Title = "ThemTV";
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Thêm Thành Viên</title>
+    <link href="~/css/goitap.css" rel="stylesheet" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Thêm Thành Viên
+        </div>
+        <form method="post" action="ThemTV" enctype="multipart/form-data">
+            @*truyền file qua bên controller*@
+
+            <div class="field">
+                <input type="text" name="TenTV">
+                <label>Tên Thành Viên</label>
+            </div>
+            <div class="field">
+                <input type="file" name="HinhAnh">
+                <label>Hình Ảnh</label>
+            </div>
+            <div class="field">
+                <input type="text" name="SDT">
+                <label>Số Điện Thoại</label>
+            </div>
+            <label>Giới Tính</label>
+            <div class="field">
+                <select class="form-control" name="Gioitinh">
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+            </div>
+            <div class="field">
+                <input type="date" name="NgaySinh">
+                <label>Ngày Sinh</label>
+            </div>
+            @*<div class="field">
+            <input type="date" name="NgayTao">
+            <label>Ngày Tạo</label>
+        </div>*@
+            <div class="field">
+                <input type="submit" value="Thêm">
+            </div>
+            <div class="signup-link">
+                <a href="/ThanhVien/Thanhvien">Quay về</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

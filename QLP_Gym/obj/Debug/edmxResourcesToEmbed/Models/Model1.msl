@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLPGModelStoreContainer" CdmEntityContainer="QLPGEntities3">
+    <EntitySetMapping Name="Account">
+      <EntityTypeMapping TypeName="QLPGModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_Role" ColumnName="id_Role" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="TenNV" ColumnName="TenNV" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BaoCaoDoanhThu">
+      <EntityTypeMapping TypeName="QLPGModel.BaoCaoDoanhThu">
+        <MappingFragment StoreEntitySet="BaoCaoDoanhThu">
+          <ScalarProperty Name="id_BC" ColumnName="id_BC" />
+          <ScalarProperty Name="NoiDungBaoCao" ColumnName="NoiDungBaoCao" />
+          <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+          <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietBaoCao">
+      <EntityTypeMapping TypeName="QLPGModel.ChiTietBaoCao">
+        <MappingFragment StoreEntitySet="ChiTietBaoCao">
+          <ScalarProperty Name="id_CTBC" ColumnName="id_CTBC" />
+          <ScalarProperty Name="id_BC" ColumnName="id_BC" />
+          <ScalarProperty Name="id_HV" ColumnName="id_HV" />
+          <ScalarProperty Name="id_GT" ColumnName="id_GT" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietDK_GoiTap">
+      <EntityTypeMapping TypeName="QLPGModel.ChiTietDK_GoiTap">
+        <MappingFragment StoreEntitySet="ChiTietDK_GoiTap">
+          <ScalarProperty Name="id_CTDKGoiTap" ColumnName="id_CTDKGoiTap" />
+          <ScalarProperty Name="id_GT" ColumnName="id_GT" />
+          <ScalarProperty Name="id_HV" ColumnName="id_HV" />
+          <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoiTap">
+      <EntityTypeMapping TypeName="QLPGModel.GoiTap">
+        <MappingFragment StoreEntitySet="GoiTap">
+          <ScalarProperty Name="id_GT" ColumnName="id_GT" />
+          <ScalarProperty Name="TenGoiTap" ColumnName="TenGoiTap" />
+          <ScalarProperty Name="ThoiGianHieuLuc" ColumnName="ThoiGianHieuLuc" />
+          <ScalarProperty Name="ChiPhi" ColumnName="ChiPhi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoiVien">
+      <EntityTypeMapping TypeName="QLPGModel.HoiVien">
+        <MappingFragment StoreEntitySet="HoiVien">
+          <ScalarProperty Name="id_HV" ColumnName="id_HV" />
+          <ScalarProperty Name="id_TV" ColumnName="id_TV" />
+          <ScalarProperty Name="id_GT" ColumnName="id_GT" />
+          <ScalarProperty Name="TenHV" ColumnName="TenHV" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="NgayGiaNhap" ColumnName="NgayGiaNhap" />
+          <ScalarProperty Name="HanGiaNhap" ColumnName="HanGiaNhap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="QLPGModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="id_Role" ColumnName="id_Role" />
+          <ScalarProperty Name="Roles1" ColumnName="Roles" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThanhVien">
+      <EntityTypeMapping TypeName="QLPGModel.ThanhVien">
+        <MappingFragment StoreEntitySet="ThanhVien">
+          <ScalarProperty Name="id_TV" ColumnName="id_TV" />
+          <ScalarProperty Name="TenTV" ColumnName="TenTV" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

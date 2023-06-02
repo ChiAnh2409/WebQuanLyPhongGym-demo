@@ -1,0 +1,68 @@
+﻿@model QLP_Gym.ViewModel.MultipleData
+@{
+    ViewBag.Title = "ThemHV";
+    Layout = null;
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Thêm Hội Viên</title>
+    <link href="~/css/goitap.css" rel="stylesheet" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />
+</head>
+      <body>
+          <div class="wrapper">
+            <div class="title">
+                 Thêm Hội Viên
+            </div>
+            <form method="post" action="ThemHV">
+                <div>
+                    <label>Tên Thành Viên</label>
+                    <select id="disease-list" name="id_TV">
+                        @foreach (var item in Model.thanhViens)
+                        {
+                            <option value="@item.id_TV">@item.TenTV</option>
+                        }
+                    </select>
+                </div>
+                <div class="field">
+                    <input type="text" name="TenHV">
+                    <label>Tên Hội viên</label>
+                </div>
+                <div>
+                    <label>Tên Gói Tập</label>
+                    <select id="disease-list" name="id_GT">
+                        @foreach (var item in Model.goiTap)
+                        {
+                            <option value="@item.id_GT">@item.TenGoiTap</option>
+                        }
+                    </select>
+                </div>
+                <div class="field">
+                    <input type="date" name="HanGiaNhap">
+                    <label>Hạn Gia Nhập</label>
+                </div>
+                <div class="field">
+                    <input type="submit" value="Thêm">
+                </div>
+                <div class="signup-link">
+                    <a href="/HoiVien/HoiVien">Quay về</a>
+                </div>
+                @*<label>Tình Trạng</label>*@
+                @*<div class="field">
+            <select class="form-control" name="TinhTrang">
+                <option name="TinhTrang" value="true">Hoạt Động</option>
+                <option name="TinhTrang" value="false">Hết Hạn</option>
+            </select>
+        </div>*@
+                @*<div class="field">
+            <input type="date" name="NgayGiaNhap">
+            <label>Ngày Gia Nhập</label>
+        </div>*@
+            </form>
+    </div>
+</body>
+</html>
+
+

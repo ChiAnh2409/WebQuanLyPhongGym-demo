@@ -1,0 +1,64 @@
+﻿@model QLP_Gym.ViewModel.MultipleData
+@{
+    ViewBag.Title = "ThemChiTiet_DKGT";
+    Layout = null;
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Thêm Chi Tiết Đăng Ký Gói Tập</title>
+    <link href="~/css/goitap.css" rel="stylesheet" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Thêm thư viện jQuery -->
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Thêm Chi Tiết ĐKGT
+        </div>
+        <form method="post" action="ThemChiTiet_DKGT">
+            <div>
+                <label>Tên Gói Tập</label>
+                <select id="goiTap" name="id_GT">
+                    @foreach (var item2 in Model.goiTap)
+                    {
+                        <option value="@item2.id_GT" data-chiphi="@item2.ChiPhi">@item2.TenGoiTap</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <label>Tên Hội Viên</label>
+                <select id="hoiVien" name="id_HV">
+                    @foreach (var item3 in Model.hoiViens)
+                    {
+                        <option value="@item3.id_HV">@item3.TenHV</option>
+                    }
+                </select>
+            </div>
+            <div class="field">
+                <input type="text" id="thanhTien" name="ThanhTien" readonly>
+                <label>Thành Tiền</label>
+            </div>
+            <div class="field">
+                <input type="submit" value="Thêm">
+            </div>
+            <div class="signup-link">
+                <a href="/DK_GoiTap/DK_GoiTap">Quay về trang chủ</a>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Bắt sự kiện thay đổi khi chọn gói tập
+            $('#goiTap').change(function () {
+                var chiPhi = parseFloat($(this).find(':selected').data('chiphi')); // Lấy giá trị ChiPhi từ thuộc tính data-chiphi của option đã chọn
+                $('#thanhTien').val(chiPhi); // Cập nhật giá trị thành tiền
+            });
+        });
+    </script>
+</body>
+</html>
+

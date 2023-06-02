@@ -1,0 +1,70 @@
+﻿@model QLP_Gym.ViewModel.MultipleData
+@{
+    ViewBag.Title = "SuaChiTiet_DKGT";
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sửa Chi Tiết Đăng Ký Gói Tập</title>
+    <link href="~/css/goitap.css" rel="stylesheet" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Sửa Chi Tiết ĐKGT
+        </div>
+        <form method="post" action="SuaChiTiet_DKGT">
+            @foreach (var item in Model.chiTietDK_goiTap)
+            {
+                <div>
+                    <label>Tên Gói Tập</label>
+                    <select id="goiTap@(item.id_CTDKGoiTap)" name="id_GT">
+                        @foreach (var item2 in Model.goiTap)
+                        {
+                            <option value="@item2.id_GT" @(item2.id_GT == item.id_GT ? "selected" : "") data-chiphi="@item2.ChiPhi">@item2.TenGoiTap</option>
+                        }
+                    </select>
+                </div>
+                <div>
+                    <label>Tên Hội Viên</label>
+                    <select id="hoiVien@(item.id_CTDKGoiTap)" name="id_HV">
+                        @foreach (var item3 in Model.hoiViens)
+                        {
+                            <option value="@item3.id_HV" @(item3.id_HV == item.id_HV ? "selected" : "")>@item3.TenHV</option>
+                        }
+                    </select>
+                </div>
+                <div class="field">
+                    <input type="text" name="ThanhTien" value="@item.ThanhTien" readonly>
+                    <label>Thành Tiền</label>
+                </div>
+                <div class="field">
+                    <input type="submit" value="Sửa">
+                </div>
+                <div class="signup-link">
+                    <a href="/DK_GoiTap/DK_GoiTap">Quay về trang chủ</a>
+                </div>
+                <div class="field">
+                    <input style="display:none" type="text" name="id_CTDKGoiTap" value="@item.id_CTDKGoiTap" readonly>
+                </div>
+            }
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Bắt sự kiện thay đổi khi chọn gói tập
+            $('select[id^="goiTap"]').change(function () {
+                var chiPhi = parseFloat($(this).find(':selected').data('chiphi')); // Lấy giá trị ChiPhi từ thuộc tính data-chiphi của option đã chọn
+                var thanhTienInput = $(this).closest('form').find('input[name="ThanhTien"]'); // Tìm input Thành Tiền trong form hiện tại
+                thanhTienInput.val(chiPhi); // Cập nhật giá trị Thành Tiền với giá trị ChiPhi
+            });
+        });
+    </script>
+</body>
+</html>

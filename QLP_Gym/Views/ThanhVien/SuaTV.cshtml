@@ -1,0 +1,63 @@
+﻿@model QLP_Gym.Models.ThanhVien
+@{
+    ViewBag.Title = "SuaTV";
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sửa Thành Viên</title>
+    <link href="~/css/goitap.css" rel="stylesheet" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Sửa Thành Viên
+        </div>
+        <form method="post" action="SuaTV" enctype="multipart/form-data">
+            @*truyền file qua bên controller*@
+            <div class="field">
+                <input type="text" name="TenTV" value="@Model.TenTV" />
+                <label>Tên Thành Viên</label>
+            </div>
+            <div class="field">
+                <input type="file" name="HinhAnh" />
+                <label>Hình Ảnh</label>
+            </div>
+            <div class="field">
+                <input type="text" name="Sdt" value="@Model.SDT" />
+                <label>Số Điện Thoại</label>
+            </div>
+            <label>Giới Tính</label>
+            <div class="field">
+                <select class="form-control" name="Gioitinh">
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+            </div>
+            <div class="field">
+                <input type="date" name="NgaySinh" value="@Model.NgaySinh" />
+                <label>Ngày Sinh</label>
+            </div>
+            <div class="field">
+                <input type="submit" value="Sửa">
+            </div>
+            <div class="signup-link">
+                <a href="/GoiTap/Goitap">Quay về</a>
+            </div>
+            @*<label>Mã Thành Viên</label>*@
+            <div class="field">
+                <input style="display:none" name="id_TV" value="@Model.id_TV" readonly>
+            </div>
+            @*<label>Ngày Tạo</label>*@
+            <div class="field">
+                <input style="display:none" name="NgayTao" value="@Model.NgayTao">
+            </div>
+
+        </form>
+</div>
+</body>
+</html>
