@@ -8,6 +8,7 @@ Dự án bao gồm:
     + Quản lý gói tập: đăng ký gói tập, gói tập (chi phí, thời gian hiệu lực)
     + Quản lý người dùng bao gồm: nhân viên và quản lý
     + Báo cáo thống kê: tình trạng chưa hoàn thành
+    
 Giao diện trang chủ  
 ![image](https://github.com/ChiAnh2409/WebQuanLyPhongGym-demo/assets/118975118/ad58564a-6a1d-4526-80f8-54b39206618b)
 
